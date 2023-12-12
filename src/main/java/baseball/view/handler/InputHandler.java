@@ -13,6 +13,10 @@ public class InputHandler {
         return receiveValidatedInput(InputView::inputPlayerNumber);
     }
 
+    public static String receiveValidatedRetryCommand() {
+        return receiveValidatedInput(InputView::inputRetryCommand);
+    }
+
     private static <T> T receiveValidatedInput(Supplier<T> inputView) {
         while (true) {
             try {
