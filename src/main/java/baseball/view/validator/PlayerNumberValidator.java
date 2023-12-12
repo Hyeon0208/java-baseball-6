@@ -10,7 +10,7 @@ public class PlayerNumberValidator {
 
     public static void validate(String input) {
         validateFormat(input);
-        validateSize(input)가
+        validateSize(input);
         validateNumberRange(input);
     }
 
