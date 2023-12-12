@@ -6,16 +6,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private InputView() {
-    }
-
-    public static String inputPlayerNumber() {
+    public String inputPlayerNumber() {
         String number = Console.readLine();
         PlayerNumberValidator.validate(number);
         return number;
     }
 
-    public static String inputRetryCommand() {
+    public String inputRetryCommand() {
         String command = Console.readLine();
         RetryCommandValidator.validate(command);
         return command;

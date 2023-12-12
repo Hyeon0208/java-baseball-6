@@ -5,24 +5,28 @@ import baseball.view.InputView;
 import java.util.function.Supplier;
 
 public class InputHandler {
+    private final InputView inputView;
+    private final ErrorView errorView;
 
-    private InputHandler() {
+    public InputHandler(InputView inputView, ErrorView errorView) {
+        this.inputView = inputView;
+        this.errorView = errorView;
     }
 
-    public static String receiveValidatedPlayerNumber() {
-        return receiveValidatedInput(InputView::inputPlayerNumber);
+    public String receiveValidatedPlayerNumber() {
+        return receiveValidatedInput(inputView::inputPlayerNumber);
     }
 
-    public static String receiveValidatedRetryCommand() {
-        return receiveValidatedInput(InputView::inputRetryCommand);
+    public String receiveValidatedRetryCommand() {
+        return receiveValidatedInput(inputView::inputRetryCommand);
     }
 
-    private static <T> T receiveValidatedInput(Supplier<T> inputView) {
+    private <T> T receiveValidatedInput(Supplier<T> inputView) {
         while (true) {
             try {
                 return inputView.get();
             } catch (IllegalArgumentException exception) {
-                ErrorView.printErrorMessage(exception.getMessage());
+                errorView.printErrorMessage(exception.getMessage());
             }
         }
     }
